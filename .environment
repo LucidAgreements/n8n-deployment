@@ -1,0 +1,70 @@
+# Timezone settings
+TZ=Europe/Vilnius
+
+# Node environment
+NODE_ENV=production
+
+# Password settings
+ALLOW_EMPTY_PASSWORD=no
+
+# PostgreSQL settings
+POSTGRESQL_DATABASE=n8n
+POSTGRESQL_USERNAME=postgres
+POSTGRESQL_PASSWORD=wGu8LGKvuWh4AgKzF4GeFvKcB5OrMy9eHRJUrHQGIrPJerLqPg
+POSTGRESQL_TIMEZONE=Europe/Vilnius
+
+# Redis settings
+REDIS_PASSWORD=8D0ZsuvVT1UhnlgxajkCuD9TLumfhG5guawALKRUiDUjEPfI91
+
+# Binary
+N8N_DEFAULT_BINARY_DATA_MODE=filesystem
+
+# Database
+DB_POSTGRESDB_PASSWORD=wGu8LGKvuWh4AgKzF4GeFvKcB5OrMy9eHRJUrHQGIrPJerLqPg
+DB_POSTGRESDB_HOST=n8n-postgresql
+DB_TYPE=postgresdb
+
+# Deployment
+N8N_PERSONALIZATION_ENABLED=false
+N8N_HIRING_BANNER_ENABLED=false
+N8N_PROTOCOL=https
+N8N_HOST=automation.islucid.dev
+N8N_PORT=5678
+
+# Endpoints
+WEBHOOK_URL=https://automation.islucid.dev
+
+# Executions
+EXECUTIONS_MODE=queue
+
+# Queue mode
+OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS=true
+QUEUE_HEALTH_CHECK_ACTIVE=true
+QUEUE_BULL_REDIS_PASSWORD=8D0ZsuvVT1UhnlgxajkCuD9TLumfhG5guawALKRUiDUjEPfI91
+QUEUE_BULL_REDIS_HOST=n8n-redis
+QUEUE_BULL_REDIS_PORT=6379
+QUEUE_BULL_REDIS_DB=0
+
+# Security
+N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+N8N_GIT_NODE_DISABLE_BARE_REPOS=true
+N8N_BLOCK_ENV_ACCESS_IN_NODE=true
+N8N_ENCRYPTION_KEY=xNp1tq24naMXMR3qtjduT9rls3WBbCPwvOJMeoXAFhkth8xaIx
+
+# Task runners
+N8N_RUNNERS_ENABLED=true
+
+# Timezone and localization
+GENERIC_TIMEZONE=Europe/Vilnius
+
+# User management SMTP
+N8N_SMTP_SENDER="isLucid Automation <automation@islucid.dev>"
+N8N_SMTP_USER=96395e001@smtp-brevo.com
+N8N_SMTP_PASS=R2m0Qp3nyx6DrKbI
+N8N_SMTP_HOST=smtp-relay.brevo.com
+N8N_SMTP_PORT=587
+N8N_SMTP_SSL=true
+N8N_SMTP_TLS=false
+
+# Proxy
+N8N_PROXY_HOPS=1

@@ -5,12 +5,8 @@ services:
     restart: always
     ports:
       - "5432:5432"
-    environment:
-      - ALLOW_EMPTY_PASSWORD=no
-      - POSTGRESQL_DATABASE=postgres
-      - POSTGRESQL_USERNAME=postgres
-      - POSTGRESQL_PASSWORD=wGu8LGKvuWh4AgKzF4GeFvKcB5OrMy9eHRJUrHQGIrPJerLqPg
-      - POSTGRESQL_TIMEZONE=Europe/Vilnius
+    env_file:
+      - .environment
     volumes:
       - n8n-postgresql:/bitnami/postgresql
     healthcheck:
@@ -24,9 +20,8 @@ services:
     restart: always
     ports:
       - "6379:6379"
-    environment:
-      - ALLOW_EMPTY_PASSWORD=no
-      - REDIS_PASSWORD=8D0ZsuvVT1UhnlgxajkCuD9TLumfhG5guawALKRUiDUjEPfI91
+    env_file:
+      - .environment
     volumes:
       - n8n-redis:/bitnami/redis/data
     healthcheck:
@@ -39,52 +34,14 @@ services:
     image: n8nio/n8n:latest
     restart: always
     ports:
-      - 5678:5678
+      - "5678:5678"
     depends_on:
       n8n-postgresql:
         condition: service_healthy
       n8n-redis:
         condition: service_healthy
-    environment:
-      - OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS=true
-      - N8N_ENCRYPTION_KEY=zQp5avC8mXCjo9d6eRIzZH0jHz92JeaXEExnieTps3QSbCIWrd
-      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false
-      - N8N_PERSONALIZATION_ENABLED=false
-      - N8N_HIRING_BANNER_ENABLED=false
-      - N8N_RUNNERS_ENABLED=true
-      - N8N_DISABLE_UI=false
-      - N8N_HOST=automation.islucid.dev
-      - N8N_PORT=5678
-      - N8N_PROTOCOL=https
-      - WEBHOOK_URL=https://automation.islucid.dev
-      - N8N_SMTP_HOST=smtp-relay.brevo.com
-      - N8N_SMTP_PORT=587
-      - N8N_SMTP_SSL=true
-      - N8N_SMTP_TLS=false
-      - N8N_SMTP_USER=96395e001@smtp-brevo.com
-      - N8N_SMTP_PASS=R2m0Qp3nyx6DrKbI
-      - N8N_SMTP_SENDER=isLucid Automation <automation@islucid.dev>
-      - N8N_EXPRESS_TRUST_PROXY=true
-      - N8N_PROXY_HOPS=1
-      - N8N_GIT_NODE_DISABLE_BARE_REPOS=true
-      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
-      - EXPRESS_TRUST_PROXY=true
-      - NODE_ENV=production
-      - GENERIC_TIMEZONE=Europe/Vilnius
-      - TZ=Europe/Vilnius
-      - DB_TYPE=postgresdb
-      - DB_POSTGRESDB_DATABASE=postgres
-      - DB_POSTGRESDB_HOST=n8n-postgresql
-      - DB_POSTGRESDB_PORT=5432
-      - DB_POSTGRESDB_USER=postgres
-      - DB_POSTGRESDB_PASSWORD=wGu8LGKvuWh4AgKzF4GeFvKcB5OrMy9eHRJUrHQGIrPJerLqPg
-      - DB_POSTGRESDB_SCHEMA=public
-      - EXECUTIONS_MODE=queue
-      - QUEUE_BULL_REDIS_HOST=n8n-redis
-      - QUEUE_BULL_REDIS_PORT=6379
-      - QUEUE_BULL_REDIS_DB=0
-      - QUEUE_BULL_REDIS_PASSWORD=8D0ZsuvVT1UhnlgxajkCuD9TLumfhG5guawALKRUiDUjEPfI91
-      - QUEUE_HEALTH_CHECK_ACTIVE=true
+    env_file:
+      - .environment
     volumes:
       - /home/lucidagreements/Volumes/automation:/home/node/data
       - n8n-server:/home/node/.n8n
@@ -100,46 +57,8 @@ services:
     depends_on:
       n8n-server:
         condition: service_healthy
-    environment:
-      - OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS=true
-      - N8N_ENCRYPTION_KEY=zQp5avC8mXCjo9d6eRIzZH0jHz92JeaXEExnieTps3QSbCIWrd
-      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false
-      - N8N_PERSONALIZATION_ENABLED=false
-      - N8N_HIRING_BANNER_ENABLED=false
-      - N8N_RUNNERS_ENABLED=true
-      - N8N_DISABLE_UI=true
-      - N8N_HOST=automation.islucid.dev
-      - N8N_PORT=5678
-      - N8N_PROTOCOL=https
-      - WEBHOOK_URL=https://automation.islucid.dev
-      - N8N_SMTP_HOST=smtp-relay.brevo.com
-      - N8N_SMTP_PORT=587
-      - N8N_SMTP_SSL=true
-      - N8N_SMTP_TLS=false
-      - N8N_SMTP_USER=96395e001@smtp-brevo.com
-      - N8N_SMTP_PASS=R2m0Qp3nyx6DrKbI
-      - N8N_SMTP_SENDER=isLucid Automation <automation@islucid.dev>
-      - N8N_EXPRESS_TRUST_PROXY=true
-      - N8N_PROXY_HOPS=1
-      - N8N_GIT_NODE_DISABLE_BARE_REPOS=true
-      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
-      - EXPRESS_TRUST_PROXY=true
-      - NODE_ENV=production
-      - GENERIC_TIMEZONE=Europe/Vilnius
-      - TZ=Europe/Vilnius
-      - DB_TYPE=postgresdb
-      - DB_POSTGRESDB_DATABASE=postgres
-      - DB_POSTGRESDB_HOST=n8n-postgresql
-      - DB_POSTGRESDB_PORT=5432
-      - DB_POSTGRESDB_USER=postgres
-      - DB_POSTGRESDB_PASSWORD=wGu8LGKvuWh4AgKzF4GeFvKcB5OrMy9eHRJUrHQGIrPJerLqPg
-      - DB_POSTGRESDB_SCHEMA=public
-      - EXECUTIONS_MODE=queue
-      - QUEUE_BULL_REDIS_HOST=n8n-redis
-      - QUEUE_BULL_REDIS_PORT=6379
-      - QUEUE_BULL_REDIS_DB=0
-      - QUEUE_BULL_REDIS_PASSWORD=8D0ZsuvVT1UhnlgxajkCuD9TLumfhG5guawALKRUiDUjEPfI91
-      - QUEUE_HEALTH_CHECK_ACTIVE=true
+    env_file:
+      - .environment
     volumes:
       - /home/lucidagreements/Volumes/automation:/home/node/data
       - n8n-worker:/home/node/.n8n
