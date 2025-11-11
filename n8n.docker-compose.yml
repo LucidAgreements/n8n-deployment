@@ -1,16 +1,16 @@
 services:
   n8n-postgresql:
     container_name: n8n-postgresql
-    image: bitnami/postgresql:latest
+    image: postgres:latest
     restart: always
     ports:
       - "5432:5432"
     env_file:
       - .environment
     volumes:
-      - n8n-postgresql:/bitnami/postgresql
+      - n8n-postgresql:/var/lib/postgresql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d n8n"]
       interval: 10s
       timeout: 5s
       retries: 5
