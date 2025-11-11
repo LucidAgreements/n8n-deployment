@@ -67,8 +67,8 @@ N8N_SMTP_USER=96395e001@smtp-brevo.com
 N8N_SMTP_PASS=R2m0Qp3nyx6DrKbI
 N8N_SMTP_HOST=smtp-relay.brevo.com
 N8N_SMTP_PORT=587
-N8N_SMTP_SSL=true
-N8N_SMTP_TLS=false
+N8N_SMTP_SSL=false
+N8N_SMTP_TLS=true
 
 # Proxy
 N8N_PROXY_HOPS=1
