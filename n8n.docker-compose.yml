@@ -54,7 +54,8 @@ services:
   n8n-worker:
     image: n8nio/n8n:latest
     restart: always
-    command: worker
+    command: >
+      worker
     depends_on:
       n8n-server:
         condition: service_healthy
