@@ -9,7 +9,6 @@ ALLOW_EMPTY_PASSWORD=no
 
 # PostgreSQL settings
 POSTGRES_HOST_AUTH_METHOD=scram-sha-256
-POSTGRES_INITDB_ARGS="--auth-host=scram-sha-256 --auth-local=scram-sha-256"
 POSTGRES_PASSWORD=wGu8LGKvuWh4AgKzF4GeFvKcB5OrMy9eHRJUrHQGIrPJerLqPg
 POSTGRES_USER=postgres
 POSTGRES_DB=n8n
