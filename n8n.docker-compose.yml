@@ -19,12 +19,10 @@ services:
     image: redis:latest
     command: >
       redis-server
-      --requirepass $${REDIS_PASSWORD}
+      --requirepass 8D0ZsuvVT1UhnlgxajkCuD9TLumfhG5guawALKRUiDUjEPfI91
     restart: always
     ports:
       - "6379:6379"
-    env_file:
-      - .environment
     volumes:
       - n8n-redis:/data
     healthcheck:
