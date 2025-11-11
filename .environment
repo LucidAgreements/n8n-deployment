@@ -71,3 +71,6 @@ N8N_SMTP_TLS=true
 
 # Proxy
 N8N_PROXY_HOPS=1
+
+# Telemetry
+N8N_DIAGNOSTICS_ENABLED=false
